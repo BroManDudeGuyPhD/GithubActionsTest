@@ -1,8 +1,5 @@
-# This is a basic workflow to help you get started with Actions
-
 name: IRONMAN demo
 
-# Controls when the workflow will run
 on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -12,32 +9,34 @@ on:
         type: string
         required: false
 
+  #Allows this workflow to be called programatically as a downstream tasjk in another workflow
+  workflow_call:
+    inputs:
+      text:
+        description: Enter text here
+        type: string
+        required: false
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
-  build:
-    # The type of runner that the job will run on
+  cowsay:
     runs-on: ironman
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
 
-      # Runs a single command using the runners shell
       - name: Run a one-line script
         run: hostname
-
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
-        run: |
-          curl wttr.in?format="%c+%l+%t+%m"
-      
-      - name: Get weather forecast
-        run: curl wttr.in
-          
 
       - name: cowsay  
         if: ${{inputs.text}}
         run: cowsay ${{inputs.text}}
+
+  weather:
+    runs-on: ironman
+    steps:
+      - name: Run a multi-line script
+        run: |
+          curl wttr.in?format="%c+%l+%t+%m"
+    
+      - name: Get weather forecast
+        run: curl wttr.in
