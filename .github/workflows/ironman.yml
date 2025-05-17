@@ -28,7 +28,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Report Hostname
+      - name: Report server's Hostname
         run: hostname
 
       - name: cowsay
