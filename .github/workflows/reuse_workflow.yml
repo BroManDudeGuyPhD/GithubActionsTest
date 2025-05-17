@@ -1,17 +1,6 @@
-name: IRONMAN demo
+name: REUSE demo
 
 on:
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
-    inputs:
-      text:
-        description: Enter text here
-        type: string
-        required: false
-      reuse:
-        description: Run reuse workflow?
-        type: boolean
-
   #Allows this workflow to be called programatically as a downstream tasjk in another workflow
   workflow_call:
     inputs:
@@ -43,11 +32,3 @@ jobs:
     
       - name: Get weather forecast
         run: curl wttr.in
-  
-  reuse:
-    runs-on: ironman
-    if: ${{inputs.reuse}}
-    steps:
-      - name: Run reuse if 
-        run: cowsay "Reuse function selected... Running"
-      
