@@ -22,6 +22,7 @@ on:
 
 jobs:
   cowsay:
+    name: "The Cow Says:"
     runs-on: ironman
 
     steps:
@@ -35,6 +36,7 @@ jobs:
         run: cowsay ${{inputs.text}}
 
   weather:
+    name: "How's the weather?"
     runs-on: ironman
     steps:
       - name: Run a multi-line script
