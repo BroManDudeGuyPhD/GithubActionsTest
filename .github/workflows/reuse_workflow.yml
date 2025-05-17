@@ -19,7 +19,7 @@ jobs:
       - name: Report Hostname
         run: hostname
 
-      - name: cowsay  
+      - name: cowsay
         if: ${{inputs.text}}
         run: cowsay ${{inputs.text}}
 
@@ -29,6 +29,6 @@ jobs:
       - name: Run a multi-line script
         run: |
           curl wttr.in?format="%c+%l+%t+%m"
-    
+
       - name: Get weather forecast
         run: curl wttr.in
